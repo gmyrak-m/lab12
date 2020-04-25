@@ -30,7 +30,10 @@ class myMainMenu : MainMenu
         this.MenuItems.Add(itemActions);
 
 
-        itemExit.Click += (obj, e) => Application.Exit();
+        itemExit.Click += ItemExit_Click;
+
+
+
         itemAbout.Click += (obj, e) => MessageBox.Show("Программа разработана в учебных целях студенткой 2-го курса 186 специальности Гмырак Марией. 2020",
             "О программе",
             MessageBoxButtons.OK);
@@ -39,6 +42,14 @@ class myMainMenu : MainMenu
         itemA2.Click += ItemA2_Click;
         itemA3.Click += ItemA3_Click;
 
+    }
+
+    private void ItemExit_Click(object sender, EventArgs e)
+    {
+        if (MessageBox.Show("Вы уверены, что хотите выйти?", "Выход", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        {
+            Application.Exit();
+        }
     }
 
     private void ItemA3_Click(object sender, EventArgs e)
@@ -206,7 +217,8 @@ class formPrice : Form
 class MyForm : Form
 {
     Button myButton = new Button();
-    Label formText = new Label();   
+    Label formText = new Label();
+    
 
     Button exit = new Button();
 
@@ -215,7 +227,7 @@ class MyForm : Form
 
     public MyForm()
     {
-        Size = new Size(800, 600);
+        Size = new Size(300, 200);
 
         Text = "Ремонт. Гмырак Мария";
         myButton.Text = "Нажми меня";
@@ -226,8 +238,9 @@ class MyForm : Form
         exit.Location = new Point(100, 200);
       
         
-        formText.Text = "Кнопка еще не нажата";
-        formText.Size = new Size(150, 40);
+        formText.Text = "Выберите действие для рассчета";
+        formText.Size = new Size(300, 40);
+        formText.Location = new Point(40, 40);
 
         //Controls.Add(myButton);
         Controls.Add(formText);
